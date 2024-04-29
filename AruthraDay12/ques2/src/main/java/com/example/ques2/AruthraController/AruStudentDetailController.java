@@ -1,0 +1,28 @@
+package com.example.ques2.AruthraController;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.ques2.AruthraModel.AruStudentdetail;
+import com.example.ques2.AruthraService.AruStudentDetailService;
+
+
+
+@RestController
+public class AruStudentDetailController {
+    @Autowired
+    AruStudentDetailService studentDetailService;
+    
+    @PostMapping("/studentDetail/student/{id}")
+    public ResponseEntity<AruStudentdetail> addStudentDetails(@PathVariable int id,@RequestBody AruStudentdetail studentDetail)
+    {
+       return new ResponseEntity<>(studentDetailService.addStudentDetail(id,studentDetail),HttpStatus.CREATED);
+    }
+    
+}
+
